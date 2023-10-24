@@ -4,8 +4,9 @@ function Contact() {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
     const [city, setCity] = useState('');
-    const [animalType, setAnimalType] = useState('cat'); // --> "cat" | "dog"
+    const [animalType, setAnimalType] = useState(''); // --> "cat" | "dog" | "both" | ""
     const [animalNum, setAnimalNum] = useState('');
     const [animalBreed, setAnimalBreed] = useState('');
     const [animalAge, setAnimalAge] = useState('');
@@ -14,9 +15,9 @@ function Contact() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
-    const handleChange = (event) => {
-        console.log(event.target.value);
-    }
+    // const handleChange = (event) => {
+    //     console.log(event.target.value);
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -33,7 +34,7 @@ function Contact() {
                 id='first-name'
                 name='first-name'
                 value={firstName}
-                onChange={handleChange}
+                onChange={(e => setFirstName(e.target.value))}
                 />
 
             <label htmlFor='last-name'>Last Name</label>
@@ -42,7 +43,16 @@ function Contact() {
                 id='last-name'
                 name='last-name'
                 value={lastName}
-                onChange={handleChange}
+                onChange={(e => setLastName(e.target.value))}
+                />
+
+            <label htmlFor='email'>Contact Email</label>
+            <input 
+                type='email'
+                id='email'
+                name='email'
+                value={email}
+                onChange={(e => setEmail(e.target.value))}
                 />
 
             <label htmlFor='city'>City</label>
@@ -51,12 +61,12 @@ function Contact() {
                 id='city'
                 name='city'
                 value={city}
-                onChange={handleChange}
+                onChange={(e => setCity(e.target.value))}
                 />
 
             <label htmlFor="animal-type">What kind of pet do you have?</label>
-            <select id='animal-type'>
-                <option value="select">Select from list</option>
+            <select id='animal-type' value={animalType} onChange={(e) => setAnimalType(e.target.value)}>
+                <option value=""> -- Select from option list -- </option>
                 <option value="cat">I have a Cat</option>
                 <option value="dog">I have a Dog</option>
                 <option value="both">I have both!</option>
@@ -68,7 +78,7 @@ function Contact() {
                 id='animal-num'
                 name='animal-num'
                 value={animalNum}
-                onChange={handleChange}
+                onChange={(e => setAnimalNum(e.target.value))}
                 />
 
             <label htmlFor='animal-breed'>Animal Breed</label>
@@ -77,7 +87,7 @@ function Contact() {
                 id='animal-breed'
                 name='animal-breed'
                 value={animalBreed}
-                onChange={handleChange}
+                onChange={(e => setAnimalBreed(e.target.value))}
                 />
 
             <label htmlFor='animal-age'>Animal Age</label>
@@ -86,7 +96,7 @@ function Contact() {
                 id='animal-age'
                 name='animal-age'
                 value={animalAge}
-                onChange={handleChange}
+                onChange={(e => setAnimalAge(e.target.value))}
                 />
 
             <label htmlFor='animal-name'>Name of Pet</label>
@@ -95,7 +105,7 @@ function Contact() {
                 id='animal-name'
                 name='animal-name'
                 value={animalName}
-                onChange={handleChange}
+                onChange={(e => setAnimalName(e.target.value))}
                 />
 
             <label htmlFor='start-date'>Start Date</label>
@@ -104,7 +114,7 @@ function Contact() {
                 id='start-date'
                 name='start-date'
                 value={startDate}
-                onChange={handleChange}
+                onChange={(e => setStartDate(e.target.value))}
                 />
 
             <label htmlFor='end-date'>End Date</label>
@@ -113,7 +123,7 @@ function Contact() {
                 id='end-date'
                 name='end-date'
                 value={endDate}
-                onChange={handleChange}
+                onChange={(e => setEndDate(e.target.value))}
                 />
 
             <label htmlFor='message'>Additional Information</label>
@@ -122,7 +132,7 @@ function Contact() {
                 id='message'
                 name='message'
                 value={message}
-                onChange={handleChange}
+                onChange={(e => setMessage(e.target.value))}
                 />
 
             <button type='submit' className='submit-btn'>Submit Inquiry</button>
