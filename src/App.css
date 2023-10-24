@@ -12,6 +12,12 @@
   flex-direction: column;
 }
 
+.form-error {
+  font-weight: 500;
+  font-size: 1em;
+  color: red;
+}
+
 label {
   margin-top: 1.25em;
 }
