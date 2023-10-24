@@ -37,8 +37,10 @@ const formValidate = values => {
         errors.animalAge = 'Required'
     }
 
-    if(!values.animalNum) {
+    if(!values.animalNum.length) {
         errors.animalNum = 'Required'
+    } else if(values.animalNum.length > 1) {
+        errors.animalNum = 'Please only select one checkbox'
     }
 
     if(!values.startDate) {
@@ -76,6 +78,7 @@ function Contact() {
     })
 
     // console.log("Form Values: ", formik.values);
+    console.log("Visited Fields: ", formik.touched);
 
   return (
     <div className='contact-container'>
@@ -88,8 +91,9 @@ function Contact() {
                 name='firstName'
                 value={formik.values.firstName}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.firstName ? <div className='form-error'>{formik.errors.firstName}</div>: null }
+            { formik.touched.firstName && formik.errors.firstName ? <div className='form-error'>{formik.errors.firstName}</div>: null }
 
             <label htmlFor='last-name'>Last Name</label>
             <input 
@@ -98,8 +102,9 @@ function Contact() {
                 name='lastName'
                 value={formik.values.lastName}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.lastName ? <div className='form-error'>{formik.errors.lastName}</div>: null }
+            { formik.touched.lastName && formik.errors.lastName ? <div className='form-error'>{formik.errors.lastName}</div>: null }
 
             <label htmlFor='email'>Contact Email</label>
             <input 
@@ -108,8 +113,9 @@ function Contact() {
                 name='email'
                 value={formik.values.email}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.email ? <div className='form-error'>{formik.errors.email}</div>: null }
+            { formik.touched.email &&  formik.errors.email ? <div className='form-error'>{formik.errors.email}</div>: null }
 
             <label htmlFor='city'>City</label>
             <input 
@@ -118,17 +124,18 @@ function Contact() {
                 name='city'
                 value={formik.values.city}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.city ? <div className='form-error'>{formik.errors.city}</div>: null }
+            { formik.touched.city && formik.errors.city ? <div className='form-error'>{formik.errors.city}</div>: null }
 
             <label htmlFor="animal-type">What kind of pet do you have?</label>
-            <select id='animal-type' name='animalType' value={formik.values.animalType} onChange={formik.handleChange}>
+            <select id='animal-type' name='animalType' value={formik.values.animalType} onChange={formik.handleChange} onBlur={formik.handleBlur}>
                 <option value=""> -- Select from option list -- </option>
                 <option value="cat">I have a Cat</option>
                 <option value="dog">I have a Dog</option>
                 <option value="both">I have both!</option>
             </select>
-            { formik.errors.animalType ? <div className='form-error'>{formik.errors.animalType}</div>: null }
+            { formik.touched.animalType && formik.errors.animalType ? <div className='form-error'>{formik.errors.animalType}</div>: null }
 
             <label htmlFor='animal-num'>How many pets?</label>
             <input 
@@ -137,6 +144,7 @@ function Contact() {
                 name='animalNum'
                 value='1'
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />One
             <input 
                 type='checkbox'
@@ -144,6 +152,7 @@ function Contact() {
                 name='animalNum'
                 value='2'
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />Two
             <input 
                 type='checkbox'
@@ -151,6 +160,7 @@ function Contact() {
                 name='animalNum'
                 value='3'
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />Three
             <input 
                 type='checkbox'
@@ -158,8 +168,9 @@ function Contact() {
                 name='animalNum'
                 value='4+'
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />Four or More
-            { formik.errors.animalNum ? <div className='form-error'>{formik.errors.animalNum}</div>: null }
+            { formik.touched.animalNum && formik.values.animalNum && formik.errors.animalNum ? <div className='form-error'>{formik.errors.animalNum}</div>: null }
 
             <label htmlFor='animal-breed'>Animal Breed</label>
             <input 
@@ -168,8 +179,9 @@ function Contact() {
                 name='animalBreed'
                 value={formik.values.animalBreed}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.animalBreed ? <div className='form-error'>{formik.errors.animalBreed}</div>: null }
+            { formik.touched.animalBreed && formik.errors.animalBreed ? <div className='form-error'>{formik.errors.animalBreed}</div>: null }
 
             <label htmlFor='animal-age'>Animal Age</label>
             <input 
@@ -178,8 +190,9 @@ function Contact() {
                 name='animalAge'
                 value={formik.values.animalAge}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.animalAge ? <div className='form-error'>{formik.errors.animalAge}</div>: null }
+            { formik.touched.animalAge && formik.errors.animalAge ? <div className='form-error'>{formik.errors.animalAge}</div>: null }
 
             <label htmlFor='animal-name'>Name of Pet</label>
             <input 
@@ -188,8 +201,9 @@ function Contact() {
                 name='animalName'
                 value={formik.values.animalName}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.animalName ? <div className='form-error'>{formik.errors.animalName}</div>: null }
+            { formik.touched.animalName &&  formik.errors.animalName ? <div className='form-error'>{formik.errors.animalName}</div>: null }
 
             <label htmlFor='start-date'>Start Date</label>
             <input 
@@ -198,8 +212,9 @@ function Contact() {
                 name='startDate'
                 value={formik.values.startDate}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.startDate ? <div className='form-error'>{formik.errors.startDate}</div>: null }
+            { formik.touched.startDate && formik.errors.startDate ? <div className='form-error'>{formik.errors.startDate}</div>: null }
 
             <label htmlFor='end-date'>End Date</label>
             <input 
@@ -208,8 +223,9 @@ function Contact() {
                 name='endDate'
                 value={formik.values.endDate}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
-            { formik.errors.endDate ? <div className='form-error'>{formik.errors.endDate}</div>: null }
+            { formik.touched.endDate && formik.errors.endDate ? <div className='form-error'>{formik.errors.endDate}</div>: null }
 
             <label htmlFor='message'>Additional Information</label>
             <textarea 
@@ -218,6 +234,7 @@ function Contact() {
                 name='message'
                 value={formik.values.message}
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 />
 
             <button type='submit' className='submit-btn'>Submit Inquiry</button>
