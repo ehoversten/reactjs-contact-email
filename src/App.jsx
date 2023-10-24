@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Contact from './components/Contact'
 import './App.css'
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <div className='app-container'>
-
+      <Contact />
     </div>
   )
 }
