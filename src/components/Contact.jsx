@@ -17,6 +17,10 @@ function Contact() {
 
     // const handleChange = (event) => {
     //     console.log(event.target.value);
+    //     setFormData({
+    //          ...formData,
+    //          [event.target.name]: event.target.value
+    //     });
     // }
 
     const handleSubmit = (event) => {
@@ -72,14 +76,35 @@ function Contact() {
                 <option value="both">I have both!</option>
             </select>
 
-            <label htmlFor='animal-num'>More than one?</label>
+            <label htmlFor='animal-num'>How many pets?</label>
             <input 
                 type='checkbox'
                 id='animal-num'
                 name='animal-num'
-                value={animalNum}
+                value='1'
                 onChange={(e => setAnimalNum(e.target.value))}
-                />
+                />One
+            <input 
+                type='checkbox'
+                id='animal-num'
+                name='animal-num'
+                value='2'
+                onChange={(e => setAnimalNum(e.target.value))}
+                />Two
+            <input 
+                type='checkbox'
+                id='animal-num'
+                name='animal-num'
+                value='3'
+                onChange={(e => setAnimalNum(e.target.value))}
+                />Three
+            <input 
+                type='checkbox'
+                id='animal-num'
+                name='animal-num'
+                value='4+'
+                onChange={(e => setAnimalNum(e.target.value))}
+                />Four or More
 
             <label htmlFor='animal-breed'>Animal Breed</label>
             <input 
