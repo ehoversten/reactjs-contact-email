@@ -1,34 +1,7 @@
-import React, { useState } from 'react';
-import { Formik, useFormik } from 'formik';
+import React from 'react';
+import { useFormik } from 'formik';
 
 function Contact() {
-
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [city, setCity] = useState('');
-    // const [animalType, setAnimalType] = useState(''); // --> "cat" | "dog" | "both" | ""
-    // const [animalNum, setAnimalNum] = useState('');
-    // const [animalBreed, setAnimalBreed] = useState('');
-    // const [animalAge, setAnimalAge] = useState('');
-    // const [animalName, setAnimalName] = useState('');
-    // const [message, setMessage] = useState('');
-    // const [startDate, setStartDate] = useState('');
-    // const [endDate, setEndDate] = useState('');
-
-    // const handleChange = (event) => {
-    //     console.log(event.target.value);
-    //     setFormData({
-    //          ...formData,
-    //          [event.target.name]: event.target.value
-    //     });
-    // }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        console.log("Submitted...");
-    }
 
     const formik = useFormik({
         initialValues: { 
