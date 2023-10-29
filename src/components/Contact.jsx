@@ -154,38 +154,41 @@ function Contact() {
             { formik.touched.animalType && formik.errors.animalType ? <div className='form-error'>{formik.errors.animalType}</div>: null }
 
             <label htmlFor='animal-num'>How many pets?</label>
-            <input 
-                type='checkbox'
-                id='animal-num'
-                name='animalNum'
-                value='1'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                />One
-            <input 
-                type='checkbox'
-                id='animal-num'
-                name='animalNum'
-                value='2'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                />Two
-            <input 
-                type='checkbox'
-                id='animal-num'
-                name='animalNum'
-                value='3'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                />Three
-            <input 
-                type='checkbox'
-                id='animal-num'
-                name='animalNum'
-                value='4+'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                />Four or More
+            <div className="checkbox-container">
+                <input 
+                    type='checkbox'
+                    id='animal-num'
+                    name='animalNum'
+                    value='1'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />One
+                <input 
+                    type='checkbox'
+                    id='animal-num'
+                    name='animalNum'
+                    value='2'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />Two
+                <input 
+                    type='checkbox'
+                    id='animal-num'
+                    name='animalNum'
+                    value='3'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />Three
+                <input 
+                    type='checkbox'
+                    id='animal-num'
+                    name='animalNum'
+                    value='4+'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    />Four or More
+
+            </div>
             { formik.touched.animalNum && formik.values.animalNum && formik.errors.animalNum ? <div className='form-error'>{formik.errors.animalNum}</div>: null }
 
             <label htmlFor='animal-breed'>Animal Breed</label>
