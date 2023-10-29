@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useFormik } from 'formik';
+import emailjs from '@emailjs/browser';
 
 const formValidate = values => {
     const errors = {}
@@ -74,6 +75,14 @@ function Contact() {
         validate: formValidate,
         onSubmit: values => {
             console.log("Submitting values: ", values);
+
+            emailjs.sendForm('service_id', 'template_id', values, 'key')
+                .then(result => {
+                    console.log("Email Sent: ", result);
+                })
+                .catch(err => {
+                    throw new Error(err)
+                });
         }
     })
 
