@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import { useFormik } from 'formik';
 import emailjs from '@emailjs/browser';
+const emailService = import.meta.env.VITE_EMAIL_SERVICE;
+const emailTemplate = import.meta.env.VITE_EMAIL_TEMPLATE;
+const emailKey = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
 
 const formValidate = values => {
     const errors = {}
@@ -57,6 +60,8 @@ const formValidate = values => {
 
 function Contact() {
 
+    const formRef = useRef();
+
     const formik = useFormik({
         initialValues: { 
             firstName: '',
@@ -76,23 +81,25 @@ function Contact() {
         onSubmit: values => {
             console.log("Submitting values: ", values);
 
-            emailjs.sendForm('service_id', 'template_id', values, 'key')
+        //    emailjs.sendForm('service_id', 'template_id', 'form_data', 'api_key')
+            emailjs.sendForm(emailService, emailTemplate, formRef.current, emailKey)
                 .then(result => {
                     console.log("Email Sent: ", result);
                 })
                 .catch(err => {
+                    console.log("error: ", err)
                     throw new Error(err)
                 });
         }
     })
 
     // console.log("Form Values: ", formik.values);
-    console.log("Visited Fields: ", formik.touched);
+    // console.log("Visited Fields: ", formik.touched);
 
   return (
     <div className='contact-container'>
 
-        <form onSubmit={formik.handleSubmit} className='contact-form'>
+        <form ref={formRef} onSubmit={formik.handleSubmit} className='contact-form'>
             <label htmlFor='first-name'>First Name</label>
             <input 
                 type='text'
